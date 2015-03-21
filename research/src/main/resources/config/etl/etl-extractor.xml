@@ -5,7 +5,8 @@
        default-autowire="byName">
 
     <bean id="simpleExtractor" class="etl.extractor.impl.SimpleExtractor">
-        <property name="filepath" value="${data.file1.path}"/>
+        <property name="filepath" value="${dataset.file.path}"/>
+        <property name="firstLineSkipped" value="true"/>
     </bean>
 
 </beans>

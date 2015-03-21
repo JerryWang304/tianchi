@@ -1,5 +1,6 @@
 package domain;
 
+import com.google.common.collect.Lists;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class Item {
     /**
      * 商品所有被操作行为
      */
-    private List<Behavior> allBehavior;
+    private List<Behavior> allBehavior = Lists.newArrayList();
 
 
     public void setItemId(Long itemId) {

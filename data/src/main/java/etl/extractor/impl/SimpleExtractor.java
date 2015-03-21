@@ -56,10 +56,6 @@ public class SimpleExtractor extends AbstractExtractor{
     private static final String DATE_POST_STRING = ":00:00";
 
 
-    public void setFilepath(String filepath){
-        super.filepath = filepath;
-    }
-
     @Override
     protected void parseLineData(Context context, String lineData) {
         List<String> temp = Splitter.on(SEPARATOR).trimResults().splitToList(lineData);

@@ -6,6 +6,7 @@ import domain.Behavior;
 import domain.Item;
 import domain.User;
 import framework.Context;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 import java.util.Map;
 import java.util.Set;
@@ -84,5 +85,10 @@ public class SimpleContext implements Context{
     @Override
     public void increCorrectedParseLineCount() {
         correctedParseLineCount++;
+    }
+
+    @Override
+    public String toString() {
+        return ReflectionToStringBuilder.toString(this);
     }
 }
