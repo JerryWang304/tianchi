@@ -28,7 +28,7 @@ public abstract class AbstractLoader implements Loader{
     protected TransferorList transferorList;
 
 
-    public Context load(String filePath) throws Exception{
+    public Context load() throws Exception{
 
         if(filePath == null){
             throw new NullPointerException("Loader need a filepath parameter!");

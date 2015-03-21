@@ -7,6 +7,6 @@ import framework.Context;
  */
 public interface Loader {
 
-    Context load(String filePath) throws Exception;
+    Context load() throws Exception;
 
 }
