@@ -12,16 +12,30 @@ public class TransferorList implements Transferor{
     /**
      * 实际的数据转换器
      */
-    private List<Transferor> transferorList;
+    private List<Transferor> transferors;
 
 
 
     @Override
     public Context tranfer(Context oldContext) throws Exception {
+
+        if(transferors == null){
+            System.out.println("[TransferorList-tranfer] warn : transferorList is NULL! so Skipped!");
+            return oldContext;
+        }
+
         Context passedContext = oldContext;
-        for(Transferor transferor : transferorList){
+        for(Transferor transferor : transferors){
             passedContext = transferor.tranfer(passedContext);
         }
         return passedContext;
+    }
+
+    public List<Transferor> getTransferors() {
+        return transferors;
+    }
+
+    public void setTransferors(List<Transferor> transferors) {
+        this.transferors = transferors;
     }
 }

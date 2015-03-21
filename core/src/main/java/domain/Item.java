@@ -56,8 +56,11 @@ public class Item {
     }
 
     public List<Behavior> getAllBehavior() {
-
         return allBehavior;
+    }
+
+    public boolean addBehavior(Behavior behavior){
+        return allBehavior.add(behavior);
     }
 
     @Override

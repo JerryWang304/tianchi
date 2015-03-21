@@ -7,7 +7,6 @@ import domain.Item;
 import domain.User;
 import framework.Context;
 
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -18,33 +17,72 @@ public class SimpleContext implements Context{
     /**
      * 上下文名称
      */
-    protected String name;
-    /**
-     * 上下文描述
-     */
-    protected String desc;
+    private String name;
     /**
      * 商品集合
      */
-    protected Map<Long, Item> itemMap = Maps.newHashMap();
+    private Map<Long, Item> itemMap = Maps.newHashMap();
     /**
      * 用户集合
      */
-    protected Map<Long, User> userMap = Maps.newHashMap();
+    private Map<Long, User> userMap = Maps.newHashMap();
     /**
-     * 所有行为集合
+     * 所有购买行为集合
      */
-    protected Set<Behavior> allBehavior = Sets.newHashSet();
+    private Set<Behavior> allBuyBehavior = Sets.newHashSet();
+    /**
+     * 所有浏览行为集合
+     */
+    private Set<Behavior> allClickBehavior = Sets.newHashSet();
+    /**
+     * 所有收藏行为
+     */
+    private Set<Behavior> allCollectBehavior = Sets.newHashSet();
+    /**
+     * 所有添加购物车行为
+     */
+    private Set<Behavior> allShoppingCartBehavior = Sets.newHashSet();
+    /**
+     * 错误解析数据行数
+     */
+    private Integer errorParseLineCount = 0;
+    /**
+     * 正确解析数据行数
+     */
+    private Integer correctedParseLineCount = 0;
 
 
+    @Override
+    public User getOrCreateGetUser(Long userId) {
+        if(userMap.containsKey(userId)){
+            return userMap.get(userId);
+        }else{
+            User user = new User();
+            user.setUserId(userId);
+            userMap.put(userId, user);
+            return user;
+        }
+    }
 
+    @Override
+    public Item getOrCreateGetItem(Long itemId) {
+        if(itemMap.containsKey(itemId)){
+            return itemMap.get(itemId);
+        }else{
+            Item item = new Item();
+            item.setItemId(itemId);
+            itemMap.put(itemId,item);
+            return item;
+        }
+    }
 
+    @Override
+    public void increErrorParseLineCount() {
+        errorParseLineCount++;
+    }
 
-
-
-
-
-
-
-
+    @Override
+    public void increCorrectedParseLineCount() {
+        correctedParseLineCount++;
+    }
 }

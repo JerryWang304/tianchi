@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface Extractor {
 
-    Context extract(List<String> filePathList) throws Exception;
+    public void buildContext(Context context) throws Exception;
 
 
 }

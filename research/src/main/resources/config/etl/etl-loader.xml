@@ -1,17 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="simpleLoader" class="etl.loader.impl.SimpleLoader">
-        <property name="extractor" ref="simpleExtractor"/>
-        <property name="transferorList" ref="transferorList"/>
-        <property name="filePathList">
+
+    <!--上下文-->
+    <bean id="simpleContext" class="framework.impl.SimpleContext"/>
+    <!--数据抽取器链-->
+    <bean id="extractorList" class="etl.extractor.impl.ExtractorList">
+        <property name="extractors">
             <list>
-                <value>${data.file1.path}</value>
-                <value>${data.file2.path}</value>
+                <ref bean="simpleExtractor"/>
             </list>
         </property>
+    </bean>
+    <!--数据转换器链-->
+    <bean id="transferorList" class="etl.transfer.impl.TransferorList"/>
+    
+    
+    
+    <bean id="simpleLoader" class="etl.loader.impl.SimpleLoader">
+        <property name="context" ref="simpleContext"/>
+        <property name="extractorList" ref="extractorList"/>
+        <property name="transferorList" ref="transferorList"/>
     </bean>
 
 

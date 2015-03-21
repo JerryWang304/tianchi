@@ -35,6 +35,10 @@ public class User {
         return allBehavior;
     }
 
+    public boolean addBehavior(Behavior behavior){
+        return allBehavior.add(behavior);
+    }
+
     @Override
     public String toString(){
         return ReflectionToStringBuilder.reflectionToString(this);

@@ -1,10 +1,12 @@
 package etl.loader.impl;
 
 import etl.extractor.Extractor;
+import etl.extractor.impl.ExtractorList;
 import etl.loader.Loader;
 import etl.transfer.Transferor;
 import etl.transfer.impl.TransferorList;
 import framework.Context;
+import framework.impl.SimpleContext;
 import org.apache.commons.lang3.ObjectUtils;
 
 import java.util.List;
@@ -13,62 +15,64 @@ import java.util.List;
  * Created by yangtao.lyt on 2015/03/21 14:34
  */
 public abstract class AbstractLoader implements Loader{
-
-    /**
-     * 文件路径
-     */
-    protected List<String> filePathList;
     /**
      * 数据提取器
      */
-    protected Extractor extractor;
+    protected ExtractorList extractorList;
     /**
      * 数据转换器链  （数据预处理）
      */
     protected TransferorList transferorList;
+    /**
+     * 上下文
+     */
+    protected Context context;
 
 
     public Context load() throws Exception{
 
-        if(filePathList == null || filePathList.size() == 0){
-            throw new NullPointerException("Loader need a filepath parameter!");
-        }
-        if(extractor == null){
-            throw new NullPointerException("Loader need a Extrator!");
+        if(extractorList == null){
+            throw new NullPointerException("Loader need a extractorList!");
         }
 
-        //数据抽取
-        Context context = extractor.extract(filePathList);
-        //数据转换
+        /*
+         * 数据抽取
+         */
+        System.out.println("[AbstractLoader-load] data extract start!");
+        extractorList.buildContext(context);
+        System.out.println("[AbstractLoader-load] data extract end!");
+        /*
+         * 数据转换
+         */
+        System.out.println("[AbstractLoader-load] data transfer start!");
         if(transferorList != null){
             context = transferorList.tranfer(context);
         }
+        System.out.println("[AbstractLoader-load] data transfer end!");
 
         return context;
     }
 
 
+    public void setExtractorList(ExtractorList extractorList) {
+        this.extractorList = extractorList;
+    }
 
+    public void setContext(Context context) {
+        this.context = context;
+    }
 
-    public void setExtractor(Extractor extractor) {
-        this.extractor = extractor;
+    public ExtractorList getExtractorList() {
+
+        return extractorList;
+    }
+
+    public Context getContext() {
+        return context;
     }
 
     public void setTransferorList(TransferorList transferorList) {
         this.transferorList = transferorList;
-    }
-
-    public List<String> getFilePathList() {
-        return filePathList;
-    }
-
-    public void setFilePathList(List<String> filePathList) {
-
-        this.filePathList = filePathList;
-    }
-
-    public Extractor getExtractor() {
-        return extractor;
     }
 
     public TransferorList getTransferorList() {

@@ -18,6 +18,15 @@ public class Behavior {
     public final static Integer BUY = 4;
 
     /**
+     * 用于唯一标示对象
+     */
+    private static Long GLOBAL_ID = 1L;
+
+    /**
+     * 内部唯一id，用于唯一标示behavior对象
+     */
+    private Long bid;
+    /**
      * 行为类型
      */
     private Integer type;
@@ -42,6 +51,14 @@ public class Behavior {
      */
     private Long categoryId;
 
+
+    public Behavior(){
+        this.bid = GLOBAL_ID++;
+    }
+
+    public Long getBid() {
+        return bid;
+    }
 
     public void setType(Integer type) {
         this.type = type;
@@ -90,6 +107,21 @@ public class Behavior {
 
     public Long getCategoryId() {
         return categoryId;
+    }
+
+
+    public static Integer getTypeByCode(String code){
+        if(code.trim().equals("1")){
+            return Behavior.CLICK;
+        }else if(code.trim().equals("2")){
+            return Behavior.COLLECT;
+        }else if(code.trim().equals("3")){
+            return Behavior.SHOPPING_CART;
+        }else if(code.trim().equals("4")){
+            return Behavior.BUY;
+        }else{
+            throw new IllegalArgumentException("[Behavior-getTypeByCode] error : code=" + code);
+        }
     }
 
 
