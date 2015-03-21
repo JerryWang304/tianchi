@@ -5,8 +5,13 @@
 
     <bean id="simpleLoader" class="etl.loader.impl.SimpleLoader">
         <property name="extractor" ref="simpleExtractor"/>
-        <property name="filePath" value="${date.file.path}"/>
         <property name="transferorList" ref="transferorList"/>
+        <property name="filePathList">
+            <list>
+                <value>${data.file1.path}</value>
+                <value>${data.file2.path}</value>
+            </list>
+        </property>
     </bean>
 
 

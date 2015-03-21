@@ -17,7 +17,7 @@ public abstract class AbstractLoader implements Loader{
     /**
      * 文件路径
      */
-    protected String filePath;
+    protected List<String> filePathList;
     /**
      * 数据提取器
      */
@@ -30,7 +30,7 @@ public abstract class AbstractLoader implements Loader{
 
     public Context load() throws Exception{
 
-        if(filePath == null){
+        if(filePathList == null || filePathList.size() == 0){
             throw new NullPointerException("Loader need a filepath parameter!");
         }
         if(extractor == null){
@@ -38,7 +38,7 @@ public abstract class AbstractLoader implements Loader{
         }
 
         //数据抽取
-        Context context = extractor.extract(filePath);
+        Context context = extractor.extract(filePathList);
         //数据转换
         if(transferorList != null){
             context = transferorList.tranfer(context);
@@ -48,9 +48,7 @@ public abstract class AbstractLoader implements Loader{
     }
 
 
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
-    }
+
 
     public void setExtractor(Extractor extractor) {
         this.extractor = extractor;
@@ -60,9 +58,13 @@ public abstract class AbstractLoader implements Loader{
         this.transferorList = transferorList;
     }
 
-    public String getFilePath() {
+    public List<String> getFilePathList() {
+        return filePathList;
+    }
 
-        return filePath;
+    public void setFilePathList(List<String> filePathList) {
+
+        this.filePathList = filePathList;
     }
 
     public Extractor getExtractor() {

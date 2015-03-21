@@ -2,6 +2,8 @@ package etl.extractor;
 
 import framework.Context;
 
+import java.util.List;
+
 /**
  * Created by yangtao.lyt on 2015/03/21 14:18
  *
@@ -10,7 +12,7 @@ import framework.Context;
  */
 public interface Extractor {
 
-    Context extract(String filePath) throws Exception;
+    Context extract(List<String> filePathList) throws Exception;
 
 
 }
