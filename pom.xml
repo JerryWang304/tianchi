@@ -11,7 +11,7 @@
     <modules>
         <module>model</module>
         <module>data</module>
-        <module>common</module>
+        <module>core</module>
         <module>reout</module>
     </modules>
 
@@ -52,6 +52,12 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.3.2</version>
         </dependency>
 
     </dependencies>
