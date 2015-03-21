@@ -13,6 +13,7 @@
         <module>data</module>
         <module>core</module>
         <module>reout</module>
+        <module>research</module>
     </modules>
 
 
@@ -61,11 +62,10 @@
         </dependency>
 
         <dependency>
-            <groupId>org.google.guava</groupId>
+            <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>18.0</version>
-        </dependency
->
+        </dependency>
     </dependencies>
 
 
