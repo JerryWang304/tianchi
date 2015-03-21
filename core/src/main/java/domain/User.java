@@ -3,6 +3,7 @@ package domain;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by yangtao.lyt on 2015/03/21 13:41
@@ -13,49 +14,16 @@ public class User {
      */
     private Long userId;
     /**
-     * 商品id
+     * 用户的所有行为
      */
-    private Long itemId;
-    /**
-     * 行为类型
-     */
-    private Integer behaviorType;
-    /**
-     * 用户经纬度
-     */
-    private String userGeoHash;
-    /**
-     * 商品所属类目
-     */
-    private String itemCategoryId;
-    /**
-     * 行为时间
-     */
-    private Date time;
-
+    private List<Behavior> allBehavior;
 
     public void setUserId(Long userId) {
         this.userId = userId;
     }
 
-    public void setItemId(Long itemId) {
-        this.itemId = itemId;
-    }
-
-    public void setBehaviorType(Integer behaviorType) {
-        this.behaviorType = behaviorType;
-    }
-
-    public void setUserGeoHash(String userGeoHash) {
-        this.userGeoHash = userGeoHash;
-    }
-
-    public void setItemCategoryId(String itemCategoryId) {
-        this.itemCategoryId = itemCategoryId;
-    }
-
-    public void setTime(Date time) {
-        this.time = time;
+    public void setAllBehavior(List<Behavior> allBehavior) {
+        this.allBehavior = allBehavior;
     }
 
     public Long getUserId() {
@@ -63,24 +31,8 @@ public class User {
         return userId;
     }
 
-    public Long getItemId() {
-        return itemId;
-    }
-
-    public Integer getBehaviorType() {
-        return behaviorType;
-    }
-
-    public String getUserGeoHash() {
-        return userGeoHash;
-    }
-
-    public String getItemCategoryId() {
-        return itemCategoryId;
-    }
-
-    public Date getTime() {
-        return time;
+    public List<Behavior> getAllBehavior() {
+        return allBehavior;
     }
 
     @Override

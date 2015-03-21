@@ -2,11 +2,12 @@ package domain;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
+import java.util.List;
+
 /**
  * Created by yangtao.lyt on 2015/03/21 13:42
  */
 public class Item {
-
     /**
      * 商品id
      */
@@ -19,6 +20,10 @@ public class Item {
      * 类目id
      */
     private Long categoryId;
+    /**
+     * 商品所有被操作行为
+     */
+    private List<Behavior> allBehavior;
 
 
     public void setItemId(Long itemId) {
@@ -46,6 +51,14 @@ public class Item {
         return categoryId;
     }
 
+    public void setAllBehavior(List<Behavior> allBehavior) {
+        this.allBehavior = allBehavior;
+    }
+
+    public List<Behavior> getAllBehavior() {
+
+        return allBehavior;
+    }
 
     @Override
     public String toString() {
