@@ -1,7 +1,9 @@
 package domain.neo4j;
 
+import org.springframework.data.neo4j.annotation.EndNode;
 import org.springframework.data.neo4j.annotation.GraphId;
 import org.springframework.data.neo4j.annotation.RelationshipEntity;
+import org.springframework.data.neo4j.annotation.StartNode;
 
 import java.util.Date;
 
@@ -24,6 +26,13 @@ public class Behavior {
      * 发生地点（经纬度-加密）
      */
     private String geoHash;
+
+    @StartNode
+    private User user;
+    @EndNode
+    private Item item;
+
+
 
     public Long getId() {
         return id;

@@ -1,3 +1,4 @@
+import domain.neo4j.RealType;
 import etl.loader.impl.SimpleLoader;
 import framework.Context;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -9,11 +10,13 @@ public class Test {
 
     public static void main(String[] args) throws Exception {
 
-        ClassPathXmlApplicationContext springContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        /*ClassPathXmlApplicationContext springContext = new ClassPathXmlApplicationContext("applicationContext.xml");
         SimpleLoader simpleLoader = (SimpleLoader)springContext.getBean("simpleLoader");
         Context context = simpleLoader.load();
-
+*/
 //        System.out.println(context.toString());
+
+        System.out.println(RealType.BUY.name());
 
 
     }
