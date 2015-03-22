@@ -13,7 +13,7 @@ public class Test {
         SimpleLoader simpleLoader = (SimpleLoader)springContext.getBean("simpleLoader");
         Context context = simpleLoader.load();
 
-        System.out.println(context.toString());
+//        System.out.println(context.toString());
 
 
     }
